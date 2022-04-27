@@ -14,7 +14,7 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
-    public void post(Employee employee){
-        employeeRepository.save(employee);
+    public Employee post(Employee employee){
+        return employeeRepository.save(employee);
     }
 }

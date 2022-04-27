@@ -18,7 +18,7 @@ public class EmployeeAPI {
     }
 
     @PostMapping("")
-    public void post(@RequestBody Employee employee){
-        employeeService.post(employee);
+    public Employee post(@RequestBody Employee employee){
+        return employeeService.post(employee);
     }
 }
