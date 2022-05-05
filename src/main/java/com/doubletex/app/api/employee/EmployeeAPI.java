@@ -3,6 +3,7 @@ package com.doubletex.app.api.employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -18,7 +19,7 @@ public class EmployeeAPI {
     }
 
     @PostMapping("")
-    public Employee post(@RequestBody Employee employee){
+    public Employee post(@Valid @RequestBody Employee employee){
         return employeeService.post(employee);
     }
 }
