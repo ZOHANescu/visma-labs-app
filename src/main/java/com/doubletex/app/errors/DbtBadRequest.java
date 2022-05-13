@@ -13,7 +13,7 @@ import java.util.TreeSet;
 
 @Getter
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-@JsonIgnoreProperties({"supressed", "cause", "stackTrace", "localizedMessage", "message"})
+@JsonIgnoreProperties({"suppressed", "cause", "stackTrace", "localizedMessage", "message"})
 public class DbtBadRequest extends RuntimeException{
 
     private int httpCode = HttpStatus.BAD_REQUEST.value();

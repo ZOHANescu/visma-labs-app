@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.time.LocalDateTime;
 
 @Getter
-@RequiredArgsConstructor
 @ResponseStatus(HttpStatus.NOT_FOUND)
-@JsonIgnoreProperties({"supressed", "cause", "stackTrace", "localizedMessage", "message"})
+@JsonIgnoreProperties({"suppressed", "cause", "stackTrace", "localizedMessage"})
 public class DbtNotFound extends RuntimeException{
 
     private final int httpCode = HttpStatus.NOT_FOUND.value();
@@ -19,8 +18,13 @@ public class DbtNotFound extends RuntimeException{
     private Long id;
     private final LocalDateTime time = LocalDateTime.now();
 
+    public DbtNotFound(Class<?> entityClass ,Long id){
+        this.entityClass = entityClass;
+        this.id = id;
+    }
+
     @Override
     public String getMessage(){
-        return "An entity of type " + entityClass.getSimpleName() + " with id: " + id + " was not found.";
+        return "An entity of type " + entityClass.getSimpleName() + " with id " + id + " was not found.";
     }
 }
