@@ -31,4 +31,10 @@ public class DbtControllerAdvice {
     public DbtNotFound handleCustomException(DbtNotFound e) {
         return e;
     }
+
+    @ExceptionHandler(DbtBadRequest.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public DbtBadRequest handleCustomException(DbtBadRequest e) {
+        return e;
+    }
 }
