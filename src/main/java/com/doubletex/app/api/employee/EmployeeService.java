@@ -3,7 +3,12 @@ package com.doubletex.app.api.employee;
 import com.doubletex.app.errors.DbtBadRequest;
 import com.doubletex.app.errors.DbtNotFound;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +40,10 @@ public class EmployeeService {
         if(employee.getSalary() > newSalary){
             DbtBadRequest.current().addValidation("salary", "New Salary isn't big enough!");
         }
+    }
+
+    public List<Employee> fetchPaginated(Integer pageNumber, Integer pageSize, String sortBy){
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
+        return employeeRepository.findAll(pageable).getContent();
     }
 }
