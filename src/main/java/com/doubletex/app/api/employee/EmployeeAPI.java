@@ -21,6 +21,11 @@ public class EmployeeAPI {
         return employeeService.post(employee);
     }
 
+    @PutMapping("")
+    public Employee put(@Valid @RequestBody Employee employee){
+        return employeeService.put(employee);
+    }
+
     @PutMapping("/{id}/raiseSalary")
     public Employee raiseSalary(@PathVariable Long id, @RequestParam Double newSalary){
         return employeeService.raiseSalary(id, newSalary);

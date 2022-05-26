@@ -45,6 +45,18 @@ export function useEmployeeForm(): EmployeeFormProps {
         }
     }
 
+    function update(){
+        if(Object.keys(error).length == 0){
+            window.fetch("/api/employee", {
+                method: "PUT",
+                body: JSON.stringify(employee),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(r => r.json()).then(r => console.log(r))
+        }
+    }
+
     return {
         employee,
         setEmployee,

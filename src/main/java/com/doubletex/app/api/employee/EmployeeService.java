@@ -19,6 +19,10 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    public Employee put(Employee employee){
+        return employeeRepository.save(employee);
+    }
+
     public Employee raiseSalary(Long id, Double newSalary){
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new DbtNotFound(Employee.class, id));
         validateSalaryRaise(employee, newSalary);
