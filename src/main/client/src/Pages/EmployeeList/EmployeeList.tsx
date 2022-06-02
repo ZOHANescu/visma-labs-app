@@ -1,9 +1,10 @@
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {Employee} from "../EmployeeForm/EmployeeForm.types";
 import './EmployeeList.css';
+import {Page} from "./Page";
 
 export type EmployeeListProps = {
-    employees: Employee[];
+    page: Page<Employee>
 }
 
 function EmployeeRow(props: {employee: Employee}){
@@ -28,7 +29,7 @@ export function EmployeeList(props: EmployeeListProps){
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.employees.map((employee) =>
+                    {props.page.content.map((employee) =>
                         <EmployeeRow key={employee.id} employee={employee}/>
                     )}
                 </TableBody>

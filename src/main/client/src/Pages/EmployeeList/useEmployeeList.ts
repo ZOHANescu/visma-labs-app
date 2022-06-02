@@ -1,18 +1,19 @@
 import {EmployeeListProps} from "./EmployeeList";
 import {useEffect, useState} from "react";
 import {Employee} from "../EmployeeForm/EmployeeForm.types";
+import {DEFAULT_PAGE, Page} from "./Page";
 
 export function useEmployeeList(): EmployeeListProps{
 
-
     const [pageNumber, setPageNumber] = useState<number>(0);
-    const [pageSize, setPageSize] = useState<number>(10);
+    const [pageSize, setPageSize] = useState<number>(5);
 
-    const [employees, setEmployees] = useState<Employee[]>([]);
+    const [page, setPage] = useState<Page<Employee>>(DEFAULT_PAGE);
 
     async function fetchData(){
 
         const params = new URLSearchParams();
+
         params.set("pageNumber", "" + pageNumber);
         params.set("pageSize", "" + pageSize);
 
@@ -30,10 +31,9 @@ export function useEmployeeList(): EmployeeListProps{
                 'Content-Type': 'application/json'
             }
         })
-        const json = await response.json();
-        const newValues = json.content;
+        const newPage = await response.json();
 
-        setEmployees(newValues);
+        setPage(newPage);
     }
 
     useEffect(() => {
@@ -41,6 +41,6 @@ export function useEmployeeList(): EmployeeListProps{
     }, []);
 
     return {
-        employees
+        page
     };
 }
