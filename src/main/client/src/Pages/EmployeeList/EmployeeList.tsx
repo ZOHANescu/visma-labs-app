@@ -12,7 +12,11 @@ export type EmployeeListProps = {
 function EmployeeRow(props: {employee: Employee}){
     return(
         <TableRow>
-            <TableCell>{props.employee.firstName}</TableCell>
+            <TableCell>
+                <a href={"/employee/?id=" + props.employee.id}>
+                    {props.employee.firstName}
+                </a>
+            </TableCell>
             <TableCell>{props.employee.lastName}</TableCell>
             <TableCell>{props.employee.salary}</TableCell>
         </TableRow>
