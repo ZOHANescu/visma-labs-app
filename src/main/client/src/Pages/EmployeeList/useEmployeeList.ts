@@ -7,7 +7,15 @@ export function useEmployeeList(): EmployeeListProps{
     const [employees, setEmployees] = useState<Employee[]>([]);
 
     async function fetchData(){
+        const newEmployees = await window.fetch("/api/employee/", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(r => r.json())
+            .then(json => json.content);
 
+        setEmployees(newEmployees);
     }
 
     useEffect(() => {
@@ -15,25 +23,6 @@ export function useEmployeeList(): EmployeeListProps{
     }, []);
 
     return {
-        employees: [
-            {
-                id: 0,
-                firstName: "John",
-                lastName: "Doe",
-                salary: 1000
-            },
-            {
-                id: 0,
-                firstName: "John",
-                lastName: "Doe",
-                salary: 1000
-            },
-            {
-                id: 0,
-                firstName: "John",
-                lastName: "Doe",
-                salary: 1000
-            }
-        ]
+        employees
     };
 }
