@@ -1,5 +1,6 @@
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {Employee} from "../EmployeeForm/EmployeeForm.types";
+import './EmployeeList.css';
 
 export type EmployeeListProps = {
     employees: Employee[];
@@ -17,7 +18,7 @@ function EmployeeRow(props: {employee: Employee}){
 
 export function EmployeeList(props: EmployeeListProps){
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className={"employee-list__table"}>
             <Table>
                 <TableHead>
                     <TableRow>
