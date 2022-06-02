@@ -11,5 +11,5 @@ export const DEFAULT_PAGE = {
     content: [],
     totalPages: 0,
     pageSize: 0,
-    pageNumber: 0
+    number: 0
 }

@@ -38,7 +38,7 @@ export function useEmployeeList(): EmployeeListProps{
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [pageNumber, pageSize]);
 
     return {
         page,
