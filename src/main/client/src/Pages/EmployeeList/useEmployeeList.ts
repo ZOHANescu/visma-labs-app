@@ -41,6 +41,7 @@ export function useEmployeeList(): EmployeeListProps{
     }, []);
 
     return {
-        page
+        page,
+        setPageNumber
     };
 }

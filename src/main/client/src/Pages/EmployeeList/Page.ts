@@ -4,7 +4,7 @@ export type Page<T> = {
     content: T[];
     totalPages: number;
     pageSize: number;
-    pageNumber: number;
+    number: number;
 }
 
 export const DEFAULT_PAGE = {
