@@ -41,4 +41,14 @@ public class EmployeeAPI {
     ){
         return employeeService.fetchPaginated(pageNumber, pageSize, sortBy);
     }
+
+    @GetMapping("/search")
+    public Page<Employee> search(
+            @RequestParam(defaultValue = "0") Integer pageNumber,
+            @RequestParam(defaultValue = "25") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "") String name
+    ){
+        return employeeService.search(pageNumber, pageSize, sortBy, name);
+    }
 }

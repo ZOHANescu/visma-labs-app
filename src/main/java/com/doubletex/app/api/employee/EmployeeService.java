@@ -47,4 +47,14 @@ public class EmployeeService {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
         return employeeRepository.findAll(pageable);
     }
+
+    public Page<Employee> search(
+            Integer pageNumber,
+            Integer pageSize,
+            String sortBy,
+            String name
+    ){
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
+        return employeeRepository.findEmployeeByFullNameLike(pageable, name);
+    }
 }
