@@ -1,4 +1,5 @@
-import {Button} from "@mui/material";
+import {Button, IconButton} from "@mui/material";
+import {PersonAddAlt} from "@mui/icons-material";
 
 export type TableToolbarProps = {
     pageNumber: number;
@@ -25,5 +26,6 @@ export function TableToolbar(props: TableToolbarProps){
                 }
             }}
         >{">"}</Button>
+        <IconButton href={"/employee"}><PersonAddAlt/></IconButton>
     </div>)
 }
