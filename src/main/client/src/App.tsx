@@ -16,6 +16,9 @@ function App() {
             <Route path="/" element={
                 <h1>
                     Welcome
+                        <a href={"/employee"}>
+                            Go to form
+                        </a>
                 </h1>
             }/>
             <Route path="/employee" element={<EmployeeForm {...useEmployeeForm()} />}/>
