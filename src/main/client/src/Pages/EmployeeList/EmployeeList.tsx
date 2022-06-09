@@ -5,6 +5,8 @@ import {Page} from "./Page";
 import {TableToolbar} from "./toolbar/TableToolbar";
 
 export type EmployeeListProps = {
+    searchQuery: string;
+    setSearchQuery(newQuery: string): void
     page: Page<Employee>
     setPageNumber(newNumber: number): void;
 }
@@ -30,6 +32,8 @@ export function EmployeeList(props: EmployeeListProps){
                 pageNumber={props.page.number}
                 totalPages={props.page.totalPages}
                 setPageNumber={props.setPageNumber}
+                searchQuery={props.searchQuery}
+                setSearchQuery={props.setSearchQuery}
             />
 
             <TableContainer component={Paper}>

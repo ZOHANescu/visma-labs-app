@@ -5,6 +5,7 @@ import {DEFAULT_PAGE, Page} from "./Page";
 
 export function useEmployeeList(): EmployeeListProps{
 
+    const [searchQuery, setSearchQuery] = useState("");
     const [pageNumber, setPageNumber] = useState<number>(0);
     const [pageSize, setPageSize] = useState<number>(5);
 
@@ -14,6 +15,7 @@ export function useEmployeeList(): EmployeeListProps{
 
         const params = new URLSearchParams();
 
+        params.set("name", searchQuery);
         params.set("pageNumber", "" + pageNumber);
         params.set("pageSize", "" + pageSize);
 
@@ -25,7 +27,7 @@ export function useEmployeeList(): EmployeeListProps{
         }).then(r => r.json())
             .then(json => json.content);*/
 
-        const response = await window.fetch("/api/employee/?" + params.toString(), {
+        const response = await window.fetch("/api/employee/search?" + params.toString(), {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -38,10 +40,12 @@ export function useEmployeeList(): EmployeeListProps{
 
     useEffect(() => {
         fetchData();
-    }, [pageNumber, pageSize]);
+    }, [pageNumber, pageSize, searchQuery]);
 
     return {
         page,
-        setPageNumber
+        setPageNumber,
+        searchQuery,
+        setSearchQuery
     };
 }
